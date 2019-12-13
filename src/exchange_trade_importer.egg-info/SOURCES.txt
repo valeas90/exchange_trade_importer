@@ -1,0 +1,7 @@
+README.md
+setup.py
+src/exchange_trade_importer.egg-info/PKG-INFO
+src/exchange_trade_importer.egg-info/SOURCES.txt
+src/exchange_trade_importer.egg-info/dependency_links.txt
+src/exchange_trade_importer.egg-info/entry_points.txt
+src/exchange_trade_importer.egg-info/top_level.txt

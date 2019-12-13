@@ -1,0 +1,3 @@
+[console_scripts]
+exchange_trade_importer = exchange_trade_importer:main
+

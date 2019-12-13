@@ -1,0 +1,57 @@
+Metadata-Version: 2.1
+Name: exchange-trade-importer
+Version: 0.1.0
+Summary: No description yet
+Home-page: https://github.com/valeas90/exchange_trade_importer
+Author: Jhon Company
+Author-email: jonvaleas@gmail.com
+License: UNKNOWN
+Project-URL: Source, https://github.com/valeas90/exchange_trade_importer/
+Description: # exchange_trade_importer: A service to load cryptocurrency exchange trades
+        
+        ## Installation Guide: What do you need
+        
+        Docker with MongoDB
+        Schema cryp
+        Collection trades created
+        poetry installed
+        "poetry install" command executed
+        
+        ## Service architecture: What, where, how and maybe why
+        
+        All code can be found in src folder, and the data to be loaded in storage folder, both at BASE location: ./exchange_trade_importer
+        Service dependencies are at BASE/pyproject.toml
+        Service can be used from command line with the following instruction: poetry run exchange_trade_importer -d
+        This 
+        
+        ## Database definition
+        
+        MongoDB database has one schema: cryp
+        
+        The schema has one collection: trades
+        
+        Each trades record is composed of the following fields and the fields have the following types:
+        
+            _id: ObjectId
+            isodate: ISODate
+            date: String
+            market: String 
+            type: String [SELL, BUY]
+            price: String
+            amount: String
+            total: String
+            fee: String
+            fee_coin: String
+            primary_coin: Dict Object
+                short_name: String
+                long_name: String
+            secondary_coin: Dict Object
+                short_name: String
+                long_name: String
+            source: String
+            description: String
+            record_key: String
+        
+Platform: UNKNOWN
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown

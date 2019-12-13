@@ -1,0 +1,3 @@
+-e git+https://github.com/valeas90/cryp.git@5499a6a8483cd076036ebc0da4895e23f32a1286#egg=cryp
+pymongo==3.9.0
+xlrd==1.2.0
