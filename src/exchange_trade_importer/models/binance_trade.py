@@ -1,3 +1,4 @@
+import datetime
 from exchange_trade_importer.models.trade import Trade
 from exchange_trade_importer.models.coin import COINS
 
@@ -34,6 +35,8 @@ class BinanceTrade(Trade):
                 self.normalized_data['description'] = '{type} {amount} {primary} using {secondary} at {price} [{date}]'.format(**descriptive)
 
             self.normalized_data['record_key'] = '{date}-{type}-{amount}-{primary}-{secondary}-{price}'.format(**descriptive)
+            self.normalized_data['isodate'] = datetime.datetime.strptime(self.normalized_data['date'], '%Y-%m-%d %H:%M:%S')
+            self.normalized_data['meta_doc_created_at'] = datetime.datetime.utcnow()
         except:
             print('Ommiting: %s' % self.normalized_data)
             self.valid_trade = False

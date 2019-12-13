@@ -30,7 +30,6 @@ The schema has one collection: trades
 Each trades record is composed of the following fields and the fields have the following types:
 
     _id: ObjectId
-    isodate: ISODate
     date: String
     market: String 
     type: String [SELL, BUY]
@@ -48,3 +47,5 @@ Each trades record is composed of the following fields and the fields have the f
     source: String
     description: String
     record_key: String
+    isodate: ISODate
+    meta_doc_created_at: ISODate
