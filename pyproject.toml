@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "exchange_trade_importer"
-version = "0.1.0"
-description = "Read and process your cryptocurrency exchange buys and sells and offer you an API to query the data"
+version = "1.0.0"
+description = "A service to load cryptocurrency exchange trades"
 authors = ["valeas90 <jonvaleas@gmail.com>"]
 
 [tool.poetry.dependencies]
