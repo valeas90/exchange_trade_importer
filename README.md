@@ -30,7 +30,7 @@ The schema has one collection: trades
 Each trades record is composed of the following fields and the fields have the following types:
 
     _id: ObjectId
-    date: String
+    strdate: String
     market: String 
     type: String [SELL, BUY]
     price: String

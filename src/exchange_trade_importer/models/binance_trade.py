@@ -27,15 +27,15 @@ class BinanceTrade(Trade):
                 'type': self.normalized_data['type'].capitalize(),
                 'amount': self.normalized_data['amount'],
                 'price': self.normalized_data['price'],
-                'date': self.normalized_data['date'],
+                'strdate': self.normalized_data['strdate'],
                 'primary': self.normalized_data['primary_coin']['long_name'],
                 'secondary': self.normalized_data['secondary_coin']['long_name']
             }
             if self.normalized_data['type'] in ['BUY', 'SELL']:
-                self.normalized_data['description'] = '{type} {amount} {primary} using {secondary} at {price} [{date}]'.format(**descriptive)
+                self.normalized_data['description'] = '{type} {amount} {primary} using {secondary} at {price} [{strdate}]'.format(**descriptive)
 
-            self.normalized_data['record_key'] = '{date}-{type}-{amount}-{primary}-{secondary}-{price}'.format(**descriptive)
-            self.normalized_data['isodate'] = datetime.datetime.strptime(self.normalized_data['date'], '%Y-%m-%d %H:%M:%S')
+            self.normalized_data['record_key'] = '{strdate}-{type}-{amount}-{primary}-{secondary}-{price}'.format(**descriptive)
+            self.normalized_data['isodate'] = datetime.datetime.strptime(self.normalized_data['strdate'], '%Y-%m-%d %H:%M:%S')
             self.normalized_data['meta_doc_created_at'] = datetime.datetime.utcnow()
         except:
             print('Ommiting: %s' % self.normalized_data)

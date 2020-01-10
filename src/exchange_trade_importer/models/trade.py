@@ -2,7 +2,7 @@ from exchange_trade_importer.utils import checker
 
 class Trade:
     BASE_FIELDS = MANDATORY_FIELDS = [
-        'date', 'market', 'type', 'price', 'amount', 'total', 'fee', 'fee_coin'
+        'strdate', 'market', 'type', 'price', 'amount', 'total', 'fee', 'fee_coin'
     ]
 
     def __init__(self, data):
