@@ -23,8 +23,12 @@ class Mongo:
         return wrapper
 
     @handle_errors
-    def find_trade(self, record_key):
-        result = self.client.cryp.trades.find_one({'record_key': record_key})
+    def find_trade(self, normalized_data):
+        result = self.client.cryp.trades.find_one(
+            {
+                'user_id': normalized_data['user_id'],
+                'meta_record_key': normalized_data['meta_record_key']
+            })
         return result
 
     @handle_errors

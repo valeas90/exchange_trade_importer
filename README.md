@@ -2,7 +2,7 @@
 
 ## What is this
 
-The purpose of this service is to load and parse estructured files containing cryptocurrency trades performed in exchanges.
+The purpose of this service is to load and parse structured files containing cryptocurrency trades performed in exchanges.
 The data will be permanently stored in a database.
 
 ## Installation Guide: What do you need

@@ -1,4 +1,5 @@
 import datetime
+import uuid
 from exchange_trade_importer.models.trade import Trade
 from exchange_trade_importer.models.coin import COINS
 
@@ -14,6 +15,9 @@ class BinanceTrade(Trade):
         self.normalize()
 
     def normalize(self):
+        self.normalized_data['trade_uuid'] = str(uuid.uuid4())
+        self.normalized_data['user_id'] = self.atr_data['user_id']
+
         for current_name, target_name in zip(self.MANDATORY_FIELDS, self.BASE_FIELDS):
             self.normalized_data[target_name] = self.atr_data[current_name]
 
@@ -34,9 +38,9 @@ class BinanceTrade(Trade):
             if self.normalized_data['type'] in ['BUY', 'SELL']:
                 self.normalized_data['description'] = '{type} {amount} {primary} using {secondary} at {price} [{strdate}]'.format(**descriptive)
 
-            self.normalized_data['record_key'] = '{strdate}-{type}-{amount}-{primary}-{secondary}-{price}'.format(**descriptive)
-            self.normalized_data['isodate'] = datetime.datetime.strptime(self.normalized_data['strdate'], '%Y-%m-%d %H:%M:%S')
+            self.normalized_data['meta_record_key'] = '{strdate}-{type}-{amount}-{primary}-{secondary}-{price}'.format(**descriptive)
             self.normalized_data['meta_doc_created_at'] = datetime.datetime.utcnow()
+            self.normalized_data['traded_at'] = datetime.datetime.strptime(self.normalized_data['strdate'], '%Y-%m-%d %H:%M:%S')
         except:
             print('Ommiting: %s' % self.normalized_data)
             self.valid_trade = False
@@ -59,7 +63,7 @@ class BinanceTrade(Trade):
         return result
 
     def insert(self, mongo):
-        result = mongo.find_trade(self.normalized_data['record_key'])
+        result = mongo.find_trade(self.normalized_data)
         if result:
             return 0
         else:
